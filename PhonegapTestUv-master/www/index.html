@@ -55,7 +55,6 @@
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device Ready</p>
 			<input type="text" id="numero" font-size="14"/>
-			<button id="saludar" type="button" onclick="javascript:onDeviceReady();">Saludar</button>
         </div>
 		<div>
 		<table id="tablita" border="1">
@@ -84,7 +83,11 @@
 			<br>
             <div class="fixed-action-btn toolbar">
               <a class="btn-floating btn-large red">
-                <i class="material-icons">insert_chart</i>
+                <i class="material-icons">BUSQUEDA</i>
+                  <button type="button" class="btn btn-success">BUSCAR</button>
+                  <button type="button" class="btn btn-danger">CONECTADO?</button>
+                  <button type="button" class="btn btn-warning">NAVEGAR</button>
+                  <button type="button" class="btn btn-info">SERVICIO</button>
               </a>
               <ul>
                 <li class="waves-effect waves-light"><a onclick="onDeviceReady();" href="#!">Contactos</a></li>
