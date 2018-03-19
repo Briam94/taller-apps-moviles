@@ -46,4 +46,72 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+    
+    ("#btn_buscar").click(function(e){
+    findContact();
+    }),
+    
+    function findContact(){
+        var opciones = new ContactFindOptions();
+        opciones.filter = $("#ti_search").val();
+        var field = ["name" , "displayName", "emails", "phoneNumbers"];
+        navigator.contacts.find(fields, contactSuccess, contactErrir, opciones);
+    }
+
+
+    function contactSuccess(contacs){
+        var lista = $("#listaContactos ul");
+        $.contacts = [];
+        lista.html("");
+        for (var i = 0; i < contacts.length; i++){
+            var contacto = {};
+            contacto.nombre = contacts[i].name.familyName;
+            
+            if(contacs[i].phoneNumbers && (contacts[i].phoneNumbers.length > 0)){
+                contacto.telefono = contacts[i].phoneNumbers[0].value;
+            }
+            
+            if(contacs[i].emails && (contacts[i].emails.length > 0)){
+                contacto.email = contacts[i].email[0].value;
+            }
+            
+            $.contacts.push(contacto);
+            
+            lista.append($("<li > <a href='#form' class='importContact' data-uid='" +i+"'>" + contacts[i].formatted +"</a></li>"));
+        }
+            lista.listview('refresh');
+    }
+
+    
+
+    function contacError(){
+        navigator.notification.alert("Error buscando contactos");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
