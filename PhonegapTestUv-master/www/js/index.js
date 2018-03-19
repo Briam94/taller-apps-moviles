@@ -88,6 +88,24 @@ var app = {
         navigator.notification.alert("Error buscando contactos");
     }
 
+    $("#btn_conexion").clock(function(e)){
+        checkConnection();
+    }
+
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'conexion desconocida';
+        states[Connection.ETHERNET] = 'conexion ethernet';
+        states[Connection.WIFI]     = 'conexion WiFi';
+        states[Connection.CELL_2G]  = 'conexion 2G ';
+        states[Connection.CELL_3G]  = 'conexion 3G ';
+        states[Connection.CELL_4G]  = 'conexion 4G ';
+        states[Connection.NONE]     = 'No network connection';
+
+        alert('Connection type: ' + states[networkState]);
+    }
 
 
 
